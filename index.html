@@ -1,0 +1,877 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Waterfront Hyderabad - Luxury Dining by the Lake</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Base styles */
+        :root {
+            --navy-blue: #0a192f;
+            --teal: #00adb5;
+            --beige: #e6d5b8;
+            --amber: #f8b500;
+            --gold: #ffd700;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+            background-color: var(--navy-blue);
+            color: white;
+        }
+        
+        /* Header styles */
+        header {
+            position: fixed;
+            width: 100%;
+            z-index: 50;
+            background: transparent;
+            backdrop-filter: blur(10px);
+            background-color: rgba(255, 255, 255, 0.1);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--amber);
+        }
+        
+        .logo span:first-child {
+            color: white;
+        }
+        
+        .logo span:last-child {
+            color: var(--amber);
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: var(--amber);
+        }
+        
+        .btn-primary {
+            background-color: var(--amber);
+            color: var(--navy-blue);
+            font-weight: 600;
+            padding: 0.75rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .btn-primary:hover {
+            background-color: var(--gold);
+            transform: scale(1.05);
+        }
+        
+        .btn-secondary {
+            background-color: transparent;
+            border: 2px solid var(--amber);
+            color: var(--amber);
+            font-weight: 600;
+            padding: 0.75rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        
+        .btn-secondary:hover {
+            background-color: var(--amber);
+            color: var(--navy-blue);
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            color: white;
+            font-size: 1.5rem;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+        
+        /* Hero Section */
+        .hero {
+            position: relative;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80') center/cover no-repeat;
+            z-index: -1;
+        }
+        
+        .hero::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(10, 25, 47, 0.7), rgba(0, 173, 181, 0.5));
+            z-index: -1;
+        }
+        
+        .hero-content {
+            text-align: center;
+            max-width: 800px;
+            padding: 0 1rem;
+            z-index: 10;
+        }
+        
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        
+        .hero p {
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+            color: var(--beige);
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        
+        .hero-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        
+        .hero-buttons .btn-primary {
+            margin-bottom: 0.5rem;
+        }
+        
+        /* Section styles */
+        .section-padding {
+            padding: 4rem 2rem;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .section-title .divider {
+            width: 6rem;
+            height: 0.25rem;
+            background-color: var(--amber);
+            margin: 0 auto;
+        }
+        
+        .section-subtitle {
+            font-size: 1.25rem;
+            color: var(--beige);
+            max-width: 600px;
+            margin: 1rem auto 0;
+        }
+        
+        /* Glass card */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        /* Menu styles */
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+        
+        .menu-item {
+            text-align: center;
+        }
+        
+        .menu-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 1rem 1rem 0 0;
+        }
+        
+        .menu-item h4 {
+            font-size: 1.25rem;
+            margin: 1rem 0 0.5rem;
+        }
+        
+        .menu-item p {
+            color: var(--beige);
+            margin-bottom: 0.5rem;
+        }
+        
+        .menu-item .price {
+            color: var(--amber);
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+        
+        /* Experience section */
+        .experience-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+        
+        .experience-card {
+            text-align: center;
+            padding: 2rem;
+        }
+        
+        .experience-card i {
+            font-size: 3rem;
+            color: var(--amber);
+            margin-bottom: 1.5rem;
+        }
+        
+        .experience-card h3 {
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+        }
+        
+        /* Gallery styles */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .gallery-item {
+            overflow: hidden;
+            border-radius: 1rem;
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .gallery-item img:hover {
+            transform: scale(1.1);
+        }
+        
+        /* Reviews styles */
+        .reviews-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+        
+        .review-card {
+            padding: 2rem;
+        }
+        
+        .stars {
+            margin-bottom: 1rem;
+            color: var(--amber);
+        }
+        
+        .reviewer-info {
+            display: flex;
+            align-items: center;
+            margin-top: 1rem;
+        }
+        
+        .reviewer-avatar {
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            background-color: #ccc;
+            border: 2px dashed #fff;
+            margin-right: 1rem;
+        }
+        
+        /* Contact styles */
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+        }
+        
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+        }
+        
+        .contact-item i {
+            font-size: 1.5rem;
+            color: var(--amber);
+            margin-right: 1rem;
+            margin-top: 0.25rem;
+        }
+        
+        .contact-text h4 {
+            margin-bottom: 0.25rem;
+        }
+        
+        .map-container {
+            height: 300px;
+            background-color: #333;
+            border-radius: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #aaa;
+        }
+        
+        /* Footer styles */
+        footer {
+            background-color: var(--navy-blue);
+            padding: 3rem 2rem 2rem;
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .footer-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        
+        .social-icons {
+            display: flex;
+            gap: 1.5rem;
+        }
+        
+        .social-icons a {
+            color: var(--amber);
+            font-size: 1.5rem;
+            transition: color 0.3s;
+        }
+        
+        .social-icons a:hover {
+            color: white;
+        }
+        
+        .footer-bottom {
+            width: 100%;
+            border-top: 1px solid #333;
+            padding-top: 1.5rem;
+            text-align: center;
+            color: var(--beige);
+        }
+        
+        .footer-bottom a {
+            color: var(--amber);
+            text-decoration: none;
+        }
+        
+        .footer-bottom a:hover {
+            text-decoration: underline;
+        }
+        
+        /* Mobile reserve button */
+        .mobile-reserve-btn {
+            position: fixed;
+            bottom: 1.5rem;
+            right: 1.5rem;
+            z-index: 40;
+            display: none;
+        }
+        
+        /* Responsive styles */
+        @media (max-width: 768px) {
+            nav {
+                padding: 1rem;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+            }
+            
+            .section-padding {
+                padding: 3rem 1rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+            
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-top {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .mobile-reserve-btn {
+                display: block;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav>
+            <div class="logo">
+                <span>Waterfront</span> <span>Hyderabad</span>
+            </div>
+            <div class="nav-links">
+                <a href="#home">Home</a>
+                <a href="#menu">Menu</a>
+                <a href="#experience">Experience</a>
+                <a href="#gallery">Gallery</a>
+                <a href="#reviews">Reviews</a>
+                <a href="#contact">Contact</a>
+            </div>
+            <button class="btn-primary">
+                Reserve Table
+            </button>
+            <button class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Dine by the Water. Taste the Moment.</h1>
+            <p>Hyderabad's finest waterfront dining experience with breathtaking lake views and exquisite cuisine</p>
+            <div class="hero-buttons">
+                <button class="btn-primary">
+                    <i class="fas fa-calendar-alt"></i> Reserve a Table
+                </button>
+                <button class="btn-secondary">
+                    <i class="fas fa-utensils"></i> Explore Menu
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Menu Section -->
+    <section id="menu" class="section-padding" style="background: linear-gradient(135deg, var(--navy-blue) 0%, var(--teal) 100%);">
+        <div class="section-title">
+            <h2>Our Culinary Journey</h2>
+            <div class="divider"></div>
+        </div>
+
+        <!-- Hyderabadi Specials -->
+        <div>
+            <h3 style="text-align: center; font-size: 1.75rem; margin-bottom: 2rem; color: var(--amber);">Hyderabadi Specials</h3>
+            <div class="menu-grid">
+                <div class="menu-item glass-card">
+                    <img src="https://images.unsplash.com/photo-1563245372-f21724e3856d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80" alt="Chicken Dum Biryani">
+                    <h4>Chicken Dum Biryani</h4>
+                    <p>Fragrant basmati rice layered with tender chicken and aromatic spices</p>
+                    <div class="price">₹450</div>
+                </div>
+                
+                <div class="menu-item glass-card">
+                    <img src="https://images.unsplash.com/photo-1563245372-f21724e3856d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80" alt="Mutton Dum Biryani">
+                    <h4>Mutton Dum Biryani</h4>
+                    <p>Slow-cooked mutton with basmati rice and traditional Hyderabadi spices</p>
+                    <div class="price">₹550</div>
+                </div>
+                
+                <div class="menu-item glass-card">
+                    <img src="https://images.unsplash.com/photo-1561758033-7e924f619b47?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80" alt="Hyderabadi Haleem">
+                    <h4>Hyderabadi Haleem</h4>
+                    <p>Slow-cooked delicacy of wheat, barley, meat and spices</p>
+                    <div class="price">₹380</div>
+                </div>
+                
+                <div class="menu-item glass-card">
+                    <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=781&q=80" alt="Mirchi Ka Salan">
+                    <h4>Mirchi Ka Salan</h4>
+                    <p>Spicy curry made with big green chilies and peanuts</p>
+                    <div class="price">₹280</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Seafood Specials -->
+        <div style="margin-top: 3rem;">
+            <h3 style="text-align: center; font-size: 1.75rem; margin-bottom: 2rem; color: var(--amber);">Seafood Specials</h3>
+            <div class="menu-grid">
+                <div class="menu-item glass-card">
+                    <img src="https://images.unsplash.com/photo-1606755962773-d324e0a13086?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Grilled Fish with Lemon Butter">
+                    <h4>Grilled Fish with Lemon Butter</h4>
+                    <p>Fresh catch of the day grilled to perfection with lemon herb butter</p>
+                    <div class="price">₹650</div>
+                </div>
+                
+                <div class="menu-item glass-card">
+                    <img src="https://images.unsplash.com/photo-1606755456206-b25206cde27e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80" alt="Butter Garlic Prawns">
+                    <h4>Butter Garlic Prawns</h4>
+                    <p>Jumbo prawns cooked in rich butter garlic sauce</p>
+                    <div class="price">₹750</div>
+                </div>
+                
+                <div class="menu-item glass-card">
+                    <img src="https://images.unsplash.com/photo-1606755456206-b25206cde27e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80" alt="Coastal Fish Curry">
+                    <h4>Coastal Fish Curry</h4>
+                    <p>Traditional coastal recipe with coconut and tamarind</p>
+                    <div class="price">₹580</div>
+                </div>
+                
+                <div class="menu-item glass-card">
+                    <img src="https://images.unsplash.com/photo-1606755456206-b25206cde27e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80" alt="Seafood Platter">
+                    <h4>Seafood Platter</h4>
+                    <p>Assortment of prawns, fish, and calamari with signature sauces</p>
+                    <div class="price">₹950</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="section-padding" style="background: linear-gradient(135deg, var(--teal) 0%, var(--navy-blue) 100%);">
+        <div class="section-title">
+            <h2>Our Dining Experience</h2>
+            <div class="divider"></div>
+            <p class="section-subtitle">Discover the perfect blend of culinary excellence and serene waterfront ambiance</p>
+        </div>
+
+        <div class="experience-grid">
+            <div class="glass-card experience-card">
+                <i class="fas fa-water"></i>
+                <h3>Lakeside Seating</h3>
+                <p>Experience the tranquil beauty of the lake with our thoughtfully designed seating arrangements that offer unobstructed views of the water.</p>
+            </div>
+
+            <div class="glass-card experience-card">
+                <i class="fas fa-sun"></i>
+                <h3>Sunset Views</h3>
+                <p>Witness the mesmerizing sunset over the water as golden hues reflect on the lake, creating an unforgettable dining atmosphere.</p>
+            </div>
+
+            <div class="glass-card experience-card">
+                <i class="fas fa-candle-holder"></i>
+                <h3>Candle-light Dinners</h3>
+                <p>Romantic evenings with soft candlelight ambiance, perfect for intimate conversations and special moments.</p>
+            </div>
+
+            <div class="glass-card experience-card">
+                <i class="fas fa-music"></i>
+                <h3>Live Music Evenings</h3>
+                <p>Enjoy soulful melodies and acoustic performances that complement your dining experience with soothing sounds.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="section-padding" style="background: linear-gradient(135deg, var(--navy-blue) 0%, var(--teal) 100%);">
+        <div class="section-title">
+            <h2>Gallery</h2>
+            <div class="divider"></div>
+            <p class="section-subtitle">A visual journey through our waterfront dining experience</p>
+        </div>
+
+        <div class="gallery-grid">
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1514933651103-005eec06c04b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Waterfront View Day">
+            </div>
+            
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1552566626-52f8b828add9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1169&q=80" alt="Waterfront View Night">
+            </div>
+            
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80" alt="Food Close-up">
+            </div>
+            
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1552566626-52f8b828add9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1169&q=80" alt="Table Setup">
+            </div>
+            
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1514933651103-005eec06c04b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Ambient Lighting">
+            </div>
+            
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80" alt="Dining Ambiance">
+            </div>
+        </div>
+    </section>
+
+    <!-- Reviews Section -->
+    <section id="reviews" class="section-padding" style="background: linear-gradient(135deg, var(--teal) 0%, var(--navy-blue) 100%);">
+        <div class="section-title">
+            <h2>What Our Guests Say</h2>
+            <div class="divider"></div>
+            <p class="section-subtitle">Experience the luxury through the words of our valued guests</p>
+        </div>
+
+        <div class="reviews-grid">
+            <div class="glass-card review-card">
+                <div class="stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                </div>
+                <p>"The waterfront view combined with exceptional cuisine made our anniversary unforgettable. The staff was attentive and the ambiance was perfect."</p>
+                <div class="reviewer-info">
+                    <div class="reviewer-avatar"></div>
+                    <div>
+                        <h4 style="font-weight: 600;">Rajesh Kumar</h4>
+                        <p style="color: var(--amber);">Google Review</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="glass-card review-card">
+                <div class="stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                </div>
+                <p>"The Hyderabadi biryani was the best I've ever had! The lake view during sunset was breathtaking. A perfect evening with family."</p>
+                <div class="reviewer-info">
+                    <div class="reviewer-avatar"></div>
+                    <div>
+                        <h4 style="font-weight: 600;">Priya Sharma</h4>
+                        <p style="color: var(--amber);">Google Review</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="glass-card review-card">
+                <div class="stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                </div>
+                <p>"The romantic setting with candlelight and soft music created the perfect atmosphere for our proposal. The food was exquisite!"</p>
+                <div class="reviewer-info">
+                    <div class="reviewer-avatar"></div>
+                    <div>
+                        <h4 style="font-weight: 600;">Amit & Sneha</h4>
+                        <p style="color: var(--amber);">Google Review</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section-padding" style="background: linear-gradient(135deg, var(--navy-blue) 0%, var(--teal) 100%);">
+        <div class="section-title">
+            <h2>Visit Us</h2>
+            <div class="divider"></div>
+            <p class="section-subtitle">Located by the serene waters of Hussain Sagar Lake, Hyderabad</p>
+        </div>
+
+        <div class="contact-container">
+            <div class="glass-card">
+                <h3 style="font-size: 1.5rem; margin-bottom: 1.5rem;">Contact Information</h3>
+                
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div class="contact-text">
+                            <h4>Address</h4>
+                            <p>Waterfront Complex, Hussain Sagar Lake, Hyderabad, Telangana 500004</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <i class="fas fa-phone-alt"></i>
+                        <div class="contact-text">
+                            <h4>Phone</h4>
+                            <p>+91 98765 43210</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <div class="contact-text">
+                            <h4>Email</h4>
+                            <p>info@waterfronthyderabad.com</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <i class="fas fa-clock"></i>
+                        <div class="contact-text">
+                            <h4>Opening Hours</h4>
+                            <p>Monday - Sunday: 12:00 PM - 11:00 PM</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div style="margin-top: 2rem;">
+                    <a href="https://wa.me/919876543210" target="_blank" class="btn-primary" style="display: flex; align-items: center; justify-content: center;">
+                        <i class="fab fa-whatsapp"></i> WhatsApp Us
+                    </a>
+                </div>
+                
+                <div style="margin-top: 1.5rem; display: flex; gap: 1rem;">
+                    <a href="#" style="font-size: 1.5rem; color: var(--amber); transition: color 0.3s;">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="#" style="font-size: 1.5rem; color: var(--amber); transition: color 0.3s;">
+                        <i class="fab fa-facebook"></i>
+                    </a>
+                    <a href="#" style="font-size: 1.5rem; color: var(--amber); transition: color 0.3s;">
+                        <i class="fab fa-tripadvisor"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="glass-card">
+                <h3 style="font-size: 1.5rem; margin-bottom: 1.5rem;">Find Us</h3>
+                <div class="map-container">
+                    Map Location<br>
+                    Waterfront Hyderabad
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-top">
+                <div>
+                    <h3 class="logo">
+                        <span>Waterfront</span> <span>Hyderabad</span>
+                    </h3>
+                    <p style="color: var(--beige); margin-top: 0.5rem;">Luxury dining by the lake</p>
+                </div>
+                
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-tripadvisor"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2026 Waterfront Hyderabad. All rights reserved. | <a href="#">Privacy Policy</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Mobile Reserve Button -->
+    <div class="mobile-reserve-btn">
+        <button class="btn-primary">
+            <i class="fas fa-calendar-alt"></i> Reserve
+        </button>
+    </div>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                window.scrollTo({
+                    top: targetElement.offsetTop - 80,
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Mobile menu toggle
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const navLinks = document.querySelector('.nav-links');
+        
+        if (mobileMenuBtn) {
+            mobileMenuBtn.addEventListener('click', () => {
+                navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+            });
+        }
+    </script>
+</body>
+</html>
